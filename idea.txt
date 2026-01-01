@@ -1,0 +1,726 @@
+## Anti-Gravity Prompt — *HireNote Full Product Specification*
+
+**Product Name:** HireNote
+**Category:** Productivity / Message Automation
+**Target Users:** Students, job seekers, recruiters, consultants, professionals
+
+---
+
+## 1. Product Overview
+
+HireNote is a web application that helps users create, customize, and reuse professional message templates using intelligent placeholder detection and AI assistance. The product prioritizes **speed, clarity, and control**, allowing users to generate high-quality messages in seconds with minimal effort.
+
+Most functionality is available **without login**. Authentication is optional and used only for saving templates, personalization, and advanced features.
+
+---
+
+## 2. Core UX & Layout
+
+### Home Page
+
+* Left sidebar:
+
+  * HireNote logo
+  * Minimal navigation
+* Top right:
+
+  * Theme toggle (light / dark)
+* Main content area:
+
+  * **Message Template Input Box**
+  * **Dynamic Field Section**
+  * **Generate Output Section**
+
+Design principles:
+
+* Clean, distraction-free UI
+* Desktop-first, mobile-friendly
+* Clear separation between:
+
+  * Template input
+  * Field filling
+  * Output generation
+
+---
+
+## 3. Template & Placeholder System
+
+### Standard Placeholder Flow
+
+* User pastes a message template.
+* Placeholders follow a defined format (e.g., `{name}`, `{role}`, `{company}`, `{job_id}`, `{date}`).
+* System automatically:
+
+  * Detects placeholders
+  * Identifies placeholder intent (person, role, date, ID, etc.)
+  * Generates corresponding input fields
+  * Applies smart defaults (capitalization, date format, etc.)
+
+### Context-Aware Enhancements
+
+* Normalize job titles
+* Auto-format dates
+* Warn softly if required fields are missing or repeated
+
+---
+
+## 4. AI-Assisted Placeholder Detection (Edge Cases)
+
+### Detect with AI
+
+* For templates that are poorly structured or not properly placeholdered:
+
+  * A **“Detect with AI”** button appears above the template input.
+  * Gemini analyzes the raw text.
+  * Returns:
+
+    * Clean placeholder names
+    * Standardized placeholder format
+    * Corresponding input fields
+* User can edit or approve detected fields.
+
+Transparency:
+
+* Show a subtle note indicating AI was used for detection.
+
+---
+
+## 5. AI Template Generation
+
+### Generate Template with AI
+
+* If user does not have a template:
+
+  * Clicking **“Generate Template with AI”** produces a medium-complexity professional template.
+* Use cases:
+
+  * Off-campus hiring
+  * Recruiter outreach
+  * HR follow-ups
+  * Professional introductions
+* Generated templates:
+
+  * Follow HireNote placeholder standards
+  * Are fully editable
+
+---
+
+## 6. Message Intelligence & Quality Control
+
+### Tone & Style Controls
+
+User-selectable options:
+
+* Tone: Formal / Neutral / Friendly
+* Length: Short / Medium / Detailed
+
+AI adapts:
+
+* Greeting style
+* Sentence length
+* Closing tone
+
+### Silent Quality Check
+
+Before output generation:
+
+* Detect:
+
+  * Missing fields
+  * Repeated information
+  * Awkward phrasing
+* Show non-blocking suggestions or warnings.
+
+---
+
+## 7. Advanced Template Capabilities
+
+### Conditional Placeholders
+
+Allow logic such as:
+
+```
+{if referral}
+Include referral paragraph
+{else}
+Standard introduction
+```
+
+UI abstraction:
+
+* Checkboxes or toggles instead of raw logic.
+
+### Template Versioning
+
+* Auto-save versions for logged-in users.
+* Allow rollback to previous versions.
+
+### Smart Defaults
+
+* Company-aware tone and sign-off suggestions.
+* Domain-appropriate language adjustments.
+
+---
+
+## 8. Inline AI Assistance
+
+### Inline Improvements
+
+* User can highlight a sentence and click **“Improve”**.
+* AI rewrites only the selected part.
+
+### Template Explanation Mode
+
+Optional toggle:
+
+* AI explains:
+
+  * Purpose of the template
+  * Meaning of each placeholder
+  * Common mistakes to avoid
+
+---
+
+## 9. Output & Export Features
+
+### Copy Formats
+
+One-click copy as:
+
+* Plain text
+* Email format
+* LinkedIn / WhatsApp style
+
+### Subject Line Generator
+
+* AI generates 2–3 subject line options based on message content.
+
+### Batch Generation (Logged-In Users)
+
+* Upload CSV with placeholder values.
+* Generate multiple messages at once.
+
+---
+
+## 10. Personalization & Profiles (Optional)
+
+### User Profile
+
+Saved fields:
+
+* Name
+* Role
+* Preferred sign-off
+
+Automatically injected into templates.
+
+### Voice Consistency
+
+User preference:
+
+* Direct / Warm / Neutral
+* AI maintains consistency across messages.
+
+---
+
+## 11. Authentication & Accounts
+
+### No Login Required
+
+* Users can generate messages freely without authentication.
+
+### Login Benefits
+
+* Save templates to dashboard
+* Version history
+* Batch generation
+* Personal profile & preferences
+
+### AI Key Management
+
+* Logged-in users can add their own Gemini API key.
+* Option to choose between:
+
+  * HireNote default AI
+  * User-provided AI key
+
+---
+
+## 12. Dashboard (Logged-In Users)
+
+* Saved templates
+* Template cloning and editing
+* Version history
+* Batch generation access
+* AI key management
+* Theme preference persistence
+
+---
+
+## 13. Trust & Transparency
+
+* “Do not store this message” toggle
+* Clear indication when AI is used
+* No hidden data retention
+
+---
+
+## 14. Success Criteria
+
+* User can generate a customized message in under 30 seconds
+* Zero learning curve
+* Works equally well for technical and non-technical users
+* Feels fast, reliable, and respectful of user control
+
+
+
+## HireNote — User Flow
+
+---
+
+## 1. First-Time Visitor (No Login)
+
+### Step 1: Landing on Home Page
+
+* User opens HireNote.
+* Sees:
+
+  * Left sidebar with HireNote logo
+  * Theme toggle on top right
+  * Main workspace with:
+
+    * Empty **Message Template Input Box**
+    * Disabled **Generate** button
+    * Optional actions:
+
+      * “Detect with AI”
+      * “Generate Template with AI”
+
+**User intent:** Understand quickly what the app does and start using it immediately.
+
+---
+
+### Step 2A: User Has a Template (Primary Path)
+
+1. User pastes a message template into the input box.
+
+2. System scans text in real time.
+
+3. If placeholders follow standard format:
+
+   * Placeholders are detected instantly.
+   * Corresponding input fields appear below the template.
+
+4. System performs a silent quality check:
+
+   * Missing placeholders
+   * Repeated values
+   * Formatting issues (non-blocking)
+
+---
+
+### Step 2B: Template Is Poorly Structured (Edge Case)
+
+1. User pastes a template with unclear or missing placeholders.
+2. System cannot confidently detect placeholders.
+3. A **“Detect with AI”** button becomes visible.
+4. User clicks **Detect with AI**.
+5. AI:
+
+   * Analyzes the text
+   * Identifies variable sections
+   * Suggests clean placeholder names
+6. Input fields are generated.
+7. User reviews and edits field names if needed.
+
+---
+
+### Step 3: User Fills Fields
+
+* User fills generated fields (name, role, company, job ID, etc.).
+* Smart defaults apply:
+
+  * Date formatting
+  * Capitalization
+  * Role normalization
+* Optional:
+
+  * Select tone (Formal / Neutral / Friendly)
+  * Select length (Short / Medium / Detailed)
+
+---
+
+### Step 4: Generate Message
+
+1. User clicks **Generate**.
+2. System:
+
+   * Applies field values
+   * Adjusts tone and length
+   * Runs final quality check
+3. Output message appears in the **Generated Output Panel**.
+
+---
+
+### Step 5: Output Actions
+
+User can:
+
+* Copy message as:
+
+  * Plain text
+  * Email format
+  * LinkedIn / WhatsApp style
+* Generate subject line suggestions
+* Improve specific sentences inline using AI
+
+---
+
+## 2. First-Time Visitor Without a Template
+
+### Step 1: Generate Template with AI
+
+1. User clicks **“Generate Template with AI”**.
+2. AI generates a medium-complexity professional template.
+3. Template appears in the input box with placeholders.
+4. Corresponding input fields are auto-generated.
+
+---
+
+### Step 2: Customize & Generate
+
+* User fills fields.
+* Chooses tone and length.
+* Clicks **Generate**.
+* Receives final message.
+
+---
+
+## 3. Optional Login Flow
+
+### Step 1: Prompt to Log In
+
+* After generating output, user sees a soft prompt:
+
+  * “Save this template to your dashboard”
+* Login is optional and non-blocking.
+
+---
+
+### Step 2: Authentication
+
+* User logs in or signs up.
+* Returned to the same workspace state.
+
+---
+
+## 4. Logged-In User Flow
+
+### Step 1: Dashboard Entry
+
+User lands on dashboard showing:
+
+* Saved templates
+* Recent templates
+* Create new template option
+
+---
+
+### Step 2: Using a Saved Template
+
+1. User selects a template.
+2. Template loads into workspace.
+3. Fields auto-generate.
+4. User fills fields or uploads CSV for batch generation.
+5. Clicks **Generate**.
+
+---
+
+### Step 3: Advanced Features (Logged-In)
+
+* Save template versions automatically
+* Roll back to previous versions
+* Manage profile details:
+
+  * Name
+  * Role
+  * Sign-off
+* Set voice preference (Direct / Warm / Neutral)
+* Add personal Gemini API key
+* Toggle “Do not store this message”
+
+---
+
+## 5. Batch Generation Flow (Logged-In Only)
+
+1. User selects a template.
+2. Clicks **Batch Generate**.
+3. Uploads CSV file.
+4. System validates placeholders.
+5. Multiple messages are generated.
+6. User downloads or copies outputs.
+
+---
+
+## 6. Trust & Transparency Flow
+
+* If AI is used:
+
+  * Show subtle indicator (“AI-assisted detection used”)
+* If user uses own Gemini key:
+
+  * Indicate clearly
+* If “Do not store” is enabled:
+
+  * Message is processed but not saved
+
+---
+
+## 7. Exit / Return Flow
+
+* Non-logged-in users:
+
+  * Can regenerate messages freely
+  * Templates are session-only
+* Logged-in users:
+
+  * Templates and preferences persist
+  * Returning user lands on dashboard
+
+---
+
+## Flow Success Criteria
+
+* First message generated in < 30 seconds
+* No forced decisions (login, AI usage, saving)
+* Clear recovery paths for edge cases
+* Consistent experience for both casual and power users
+
+
+
+## HireNote — Page Architecture & Descriptions
+
+
+## 1. Home / Workspace Page (Core Page)
+
+**Purpose:**
+Primary working area where users create, customize, and generate messages.
+
+**Description:**
+This page is the default entry point for all users. It contains the full message-generation workflow without requiring authentication. Users can paste or generate templates, detect placeholders, fill dynamic fields, and produce customized outputs in one continuous flow.
+
+**Key Elements:**
+
+* Left sidebar with logo and minimal navigation
+* Theme toggle (light/dark)
+* Message Template input box
+* “Detect with AI” action for unstructured templates
+* “Generate Template with AI” action for users without templates
+* Dynamic input fields generated from placeholders
+* Tone and length controls
+* Generate button
+* Output panel with copy/export options
+* Inline AI sentence improvement
+
+**Who uses it:**
+Everyone (logged-in and logged-out users)
+
+---
+
+## 2. Authentication Page (Login / Signup)
+
+**Purpose:**
+Allow users to save templates, access advanced features, and personalize their experience.
+
+**Description:**
+This page handles user authentication. Login is optional and never blocks core functionality. It is only required for saving templates, batch generation, and profile-based personalization.
+
+**Key Elements:**
+
+* Login and signup forms
+* Clear explanation of benefits of logging in
+* Return-to-workspace after authentication
+* No forced onboarding steps
+
+**Who uses it:**
+Users who want persistence and advanced features
+
+---
+
+## 3. Dashboard Page (Logged-In Users)
+
+**Purpose:**
+Central hub for managing saved templates and user preferences.
+
+**Description:**
+The dashboard displays all saved templates and allows users to quickly reuse, edit, clone, or delete them. It serves as the control center for frequent users.
+
+**Key Elements:**
+
+* List of saved templates
+* Template preview snippets
+* Create new template shortcut
+* Search or filter templates
+* Quick actions (edit, clone, delete)
+* Recent activity
+
+**Who uses it:**
+Logged-in users
+
+---
+
+## 4. Template Editor Page
+
+**Purpose:**
+Dedicated space for creating or refining templates in detail.
+
+**Description:**
+This page allows users to focus purely on template creation and editing without generating messages immediately. It supports advanced features like conditional placeholders and version history.
+
+**Key Elements:**
+
+* Template editor with placeholder highlighting
+* Conditional placeholder controls
+* Template explanation mode
+* Version history and rollback
+* Save and update actions
+
+**Who uses it:**
+Logged-in users creating reusable or complex templates
+
+---
+
+## 5. Batch Generation Page
+
+**Purpose:**
+Generate multiple personalized messages at once.
+
+**Description:**
+This page allows users to upload a CSV file and generate messages in bulk using a selected template. It is designed for recruiters and power users.
+
+**Key Elements:**
+
+* Template selector
+* CSV upload interface
+* Placeholder validation
+* Batch generation preview
+* Download or copy generated outputs
+
+**Who uses it:**
+Logged-in users (power users)
+
+---
+
+## 6. Profile & Preferences Page
+
+**Purpose:**
+Manage personal details and behavior preferences.
+
+**Description:**
+This page lets users define default values and preferences that are automatically applied across templates, ensuring consistency and reducing repetitive input.
+
+**Key Elements:**
+
+* Personal details (name, role, sign-off)
+* Voice preference (Direct / Warm / Neutral)
+* Theme preference persistence
+* “Do not store message” toggle
+* Save preferences
+
+**Who uses it:**
+Logged-in users
+
+---
+
+## 7. AI Settings Page
+
+**Purpose:**
+Give users control over AI usage.
+
+**Description:**
+This page allows users to manage AI-related settings, including adding a personal Gemini API key and choosing which AI source to use.
+
+**Key Elements:**
+
+* Toggle between HireNote AI and personal Gemini key
+* API key input and validation
+* Usage transparency notes
+* Safety and privacy indicators
+
+**Who uses it:**
+Logged-in users with advanced needs
+
+---
+
+## 8. Public Template Gallery Page
+
+**Purpose:**
+Help users discover and reuse high-quality templates.
+
+**Description:**
+A curated, read-only gallery of professional templates that users can preview and clone into their workspace or dashboard.
+
+**Key Elements:**
+
+* Category-based template browsing
+* Preview before cloning
+* One-click “Use Template”
+* No editing directly in gallery
+
+**Who uses it:**
+All users (login optional for cloning)
+
+---
+
+## 9. Help / Guide Page
+
+**Purpose:**
+Reduce friction for first-time users.
+
+**Description:**
+This page explains how HireNote works, including placeholders, AI detection, and best practices. It focuses on clarity rather than documentation overload.
+
+**Key Elements:**
+
+* Placeholder format examples
+* AI detection explanation
+* Common mistakes
+* Short walkthroughs
+
+**Who uses it:**
+First-time and non-technical users
+
+---
+
+## 10. Privacy & Trust Page
+
+**Purpose:**
+Build user confidence and transparency.
+
+**Description:**
+This page clearly explains how data is handled, when AI is used, and how user content is stored or discarded.
+
+**Key Elements:**
+
+* Data retention policy
+* AI usage disclosure
+* “Do not store” behavior explanation
+* Security commitments
+
+**Who uses it:**
+All users
+
+---
+
+## Summary (One-Line View)
+
+* **Home / Workspace** → create & generate messages
+* **Auth** → optional access control
+* **Dashboard** → manage saved templates
+* **Template Editor** → build reusable templates
+* **Batch Generation** → bulk message creation
+* **Profile & Preferences** → personalization
+* **AI Settings** → AI control
+* **Template Gallery** → discovery
+* **Help** → onboarding
+* **Privacy** → trust
