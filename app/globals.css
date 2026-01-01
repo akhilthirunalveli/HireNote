@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+@theme {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Strict Palette Setup */
+  --color-brand-black: #000000;
+  --color-brand-off-black: #0F0F0F;
+  --color-brand-white: #FFFFFF;
+  --color-brand-off-white: #F5F5F7;
+  --color-brand-border-light: #E5E7EB;
+  --color-brand-border-dark: #262626;
+}
+
+@layer base {
+  :root {
+    /* LIGHT MODE: Pure White Background, Black Text */
+    --background: #fafafa;
+    --foreground: #000000;
+
+    --card: #FFFFFF;
+    --card-foreground: #000000;
+
+    /* Primary Action: Black Button, White Text */
+    --primary: #000000;
+    --primary-foreground: #FFFFFF;
+
+    --muted: #F5F5F7;
+    --muted-foreground: #666666;
+
+    --border: #E5E7EB;
+    --input: #E5E7EB;
+    --ring: #000000;
+  }
+
+  .dark {
+    /* DARK MODE: Pure Black Background, White Text */
+    --background: #000000;
+    --foreground: #fafafa;
+
+    --card: #0F0F0F;
+    /* Slightly lighter for cards to distinguish from bg, or can be pure black with border */
+    --card-foreground: #FFFFFF;
+
+    /* Primary Action: White Button, Black Text */
+    --primary: #FFFFFF;
+    --primary-foreground: #000000;
+
+    --muted: #1A1A1A;
+    --muted-foreground: #A1A1A1;
+
+    --border: #262626;
+    --input: #262626;
+    --ring: #FFFFFF;
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-outfit), ui-sans-serif, system-ui;
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+
+  /* Cards */
+  .glass-card {
+    /* In dark mode, we use a border to distinguish cards if bg is black */
+    @apply bg-[var(--card)] border border-[var(--border)] rounded-2xl transition-all duration-200;
+  }
+
+  /* Form Inputs */
+  .glass-input {
+    @apply w-full px-4 py-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--foreground)]/10 focus:border-[var(--foreground)]/20 transition-all;
+  }
+
+  /* Buttons */
+  .primary-button {
+    /* Strict High Contrast */
+    @apply bg-[var(--primary)] text-[var(--primary-foreground)] font-bold rounded-full shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer;
+  }
+
+  .secondary-button {
+    @apply bg-transparent border border-[var(--border)] text-[var(--foreground)] font-medium hover:bg-[var(--muted)] transition-all rounded-full flex items-center justify-center gap-2 cursor-pointer;
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tighter text-[var(--foreground)] font-semibold;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl leading-[1.1] font-bold;
+  }
+
+  .text-muted {
+    @apply text-[var(--muted-foreground)];
+  }
+}
+
+/* Scrollbar Polish */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 dark:bg-gray-900 rounded-full;
+}
