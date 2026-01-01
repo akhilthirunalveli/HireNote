@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 import { ThemeProvider } from "@/hooks/useTheme";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next"
 
 
 export default function RootLayout({
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" storageKey="hirenote:theme">
           {children}
           <Toaster position="bottom-center" />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
