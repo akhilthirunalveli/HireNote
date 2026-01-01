@@ -1,5 +1,9 @@
 # HireNote
 
+<p align="center">
+  <img src="public/logo.png" alt="HireNote Logo" width="100" />
+</p>
+
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
@@ -10,6 +14,8 @@
 
 HireNote is an AI-powered outreach assistant designed for students and job seekers. It transforms generic networking requests into tailored, professional cold emails that get responses. Built with modern web technologies and a focus on privacy and user experience.
 
+![Landing Page](public/W_LandingPage.png)
+
 
 ## Key Features
 
@@ -19,6 +25,16 @@ HireNote is an AI-powered outreach assistant designed for students and job seeke
 - **Beautiful UI**: Fully responsive interface with smooth Dark/Light mode transitions and glassmorphism design.
 - **Secure Authentication**: Robust user management via Supabase Auth.
 - **Real-time & Fast**: Built on Next.js 15 App Router for blazing fast performance and SEO.
+
+## Screenshots
+
+| Dashboard (Light) | Dashboard (Dark) |
+|:---:|:---:|
+| ![Dashboard Light](public/W_Dashboard.png) | ![Dashboard Dark](public/B_Dashboard.png) |
+
+| Generate (Light) | API (Dark) |
+|:---:|:---:|
+| ![Generate Light](public/W_Generate.png) | ![API Dark](public/B_API.png) |
 
 ## Architecture
 
@@ -114,4 +130,4 @@ Follow these steps to run HireNote locally.
 │   └── supabase/         # Auth & Database Clients
 └── public/               # Static Assets
 ```
-Built with ❤️ by [Akhil Thirunalveli]
+Built with  by [Akhil Thirunalveli]
