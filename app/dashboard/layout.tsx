@@ -1,6 +1,7 @@
 import { createSupabaseServer } from "@/lib/supabase/server";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { MobileMenu } from "@/components/dashboard/MobileMenu";
+import { Logo } from "@/components/ui/Logo";
 
 export default async function DashboardLayout({
   children,
@@ -17,10 +18,8 @@ export default async function DashboardLayout({
 
       {/* Mobile Header */}
       <div className="md:hidden sticky top-0 z-50 bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)] px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[var(--foreground)] flex items-center justify-center text-[var(--background)] font-bold shadow-sm">
-            H
-          </div>
+        <div className="flex items-center gap-3">
+          <Logo className="w-8 h-8 text-[var(--foreground)]" />
           <span className="font-outfit font-bold text-lg text-[var(--foreground)]">HireNote</span>
         </div>
         <MobileMenu />

@@ -11,7 +11,9 @@ const row2 = [
     "Sales Pitch", "Partnership Proposal", "Mentorship Request", "Follow-up after Interview",
 ];
 
-export function TemplateScroller() {
+import { User } from "@supabase/supabase-js";
+
+export function TemplateScroller({ user }: { user?: User | null }) {
     return (
         <div className="w-full relative overflow-hidden py-16 bg-transparent">
             {/* Subtle Gradient Masks */}
@@ -46,7 +48,7 @@ export function TemplateScroller() {
             <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                 <div className="p-8 bg-gradient-to-b from-transparent via-[var(--background)]/80 to-transparent backdrop-blur-[1px] w-full flex justify-center">
                     <Link
-                        href={ROUTES.login}
+                        href={user ? ROUTES.browse : ROUTES.login}
                         className="pointer-events-auto group relative inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[var(--foreground)]/5 backdrop-blur-md text-[var(--foreground)] text-sm font-medium transition-all duration-300 hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)] hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                     >
                         <span>Explore Templates</span>

@@ -13,7 +13,7 @@ export default async function HomePage() {
       <StarsBackground />
       <LandingNavbar user={user} />
 
-      <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-20 relative z-10">
+      <main className="pt-32 pb-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-20 relative z-10">
 
         {/* Hero Section */}
         <div className="text-center space-y-6 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -36,14 +36,10 @@ export default async function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-200 dark:from-gray-800 dark:to-gray-800 opacity-20 blur-3xl rounded-full -z-10 transform scale-75"></div>
           <TemplateInput mode="create" user={user} />
         </div>
-
-        {/* Social Proof / Stats removed as per user request */}
-
-
       </main>
 
-      <div className="py-20">
-        <TemplateScroller />
+      <div className="py-1">
+        <TemplateScroller user={user} />
       </div>
 
       <footer className="py-6 border-t border-[var(--border)] text-center text-sm text-muted">

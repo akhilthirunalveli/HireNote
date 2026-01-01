@@ -27,7 +27,7 @@ export function LandingNavbar({ user }: { user?: User | null }) {
     // ...
     return (
         <div className="fixed top-6 inset-x-0 z-50 flex justify-center px-4">
-            <nav className="bg-[var(--background)]/90 dark:bg-[var(--background)]/90 backdrop-blur-xl border border-[var(--border)] shadow-xl dark:shadow-2xl rounded-full px-6 py-3 flex items-center gap-8 max-w-2xl w-full justify-between transition-all duration-300 hover:scale-[1.01]">
+            <nav className="bg-[var(--background)]/90 dark:bg-[var(--background)]/90 backdrop-blur-xl border border-[var(--border)] shadow-xl dark:shadow-2xl rounded-full px-4 py-2 md:px-6 md:py-3 flex items-center gap-2 md:gap-8 max-w-2xl w-full justify-between transition-all duration-300 hover:scale-[1.01]">
 
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
@@ -38,7 +38,7 @@ export function LandingNavbar({ user }: { user?: User | null }) {
                 </Link>
 
                 {/* Actions Group */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1 md:gap-3">
                     {/* Theme Toggle */}
                     {mounted && (
                         <button
@@ -61,7 +61,7 @@ export function LandingNavbar({ user }: { user?: User | null }) {
                             href={ROUTES.dashboard}
                             className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full hover:bg-[var(--muted)] transition-colors"
                         >
-                            <span className="text-sm font-medium text-[var(--foreground)] truncate max-w-[100px]">
+                            <span className="hidden sm:block text-sm font-medium text-[var(--foreground)] truncate max-w-[100px]">
                                 {user.user_metadata?.full_name?.split(' ')[0] || "Dashboard"}
                             </span>
                             <div className="w-7 h-7 rounded-full bg-[var(--foreground)] text-[var(--background)] flex items-center justify-center text-xs font-bold">
