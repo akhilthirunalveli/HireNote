@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HireNote
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Supabase](https://img.shields.io/badge/Supabase-Auth-green?style=for-the-badge&logo=supabase)
+![Gemini AI](https://img.shields.io/badge/AI-Google_Gemini-8E75B2?style=for-the-badge&logo=google)
 
-First, run the development server:
+**Land your dream job with cold emails generated in seconds.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+HireNote is an AI-powered outreach assistant designed for students and job seekers. It transforms generic networking requests into tailored, professional cold emails that get responses. Built with modern web technologies and a focus on privacy and user experience.
+
+
+## Key Features
+
+- **AI-Powered Writing**: Generate contextual cold emails, follow-ups, and networking requests using Google Gemini Pro.
+- **Template System**: Browse, create, and manage reusable templates for different scenarios (e.g., "Sales Pitch", "Mentorship Request").
+- **Bring Your Own Key (BYOK)**: Privacy-first architecture allows users to use their own Gemini API Key for unlimited generation.
+- **Beautiful UI**: Fully responsive interface with smooth Dark/Light mode transitions and glassmorphism design.
+- **Secure Authentication**: Robust user management via Supabase Auth.
+- **Real-time & Fast**: Built on Next.js 15 App Router for blazing fast performance and SEO.
+
+## Architecture
+
+### System Overview
+```mermaid
+graph TD
+    User[UserId] -->|Auth| Supabase[Supabase Auth]
+    User -->|Interaction| UI[Next.js Client UI]
+    UI -->|Server Actions| Server[Next.js Server]
+    Server -->|Context| DB[Supabase Database]
+    Server -->|Prompt| AI[Google Gemini API]
+    
+    subgraph Privacy Layer
+    Server -.->|Optional: User Key| AI
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### User Journey
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant D as Dashboard
+    participant T as Templates
+    participant AI as Gemini AI
+    
+    U->>D: Logs In
+    D->>T: Browses Templates
+    U->>T: Selects "Cold Email to Founder"
+    T->>U: Requests Context (Name, Company, Role)
+    U->>T: Enters Details
+    T->>AI: Sends Structured Prompt
+    AI-->>T: Returns Draft Email
+    T-->>U: Displays AI Response
+    U->>U: Edits / Refines
+    U->>D: Copies to Clipboard
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Follow these steps to run HireNote locally.
 
-## Learn More
+### Prerequisites
+- Node.js 18+
+- npm / yarn / pnpm
+- A Supabase project (for Auth & DB)
+- Google Gemini API Key
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/akhilthirunalveli/HireNote.git
+    cd HireNote
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  **Configure Environment**
+    Create a `.env.local` file in the root directory:
+    ```bash
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    GEMINI_API_KEY=your_default_server_key (optional fallback)
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Run the functionality**
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+
+## 📁 Project Structure
+
+```bash
+├── app/                  # Next.js App Router
+│   ├── api/              # API Routes (Edge/Serverless)
+│   ├── auth/             # Authentication Logic
+│   ├── dashboard/        # Protected User Area
+│   └── page.tsx          # Landing Page
+├── components/           # React Components
+│   ├── dashboard/        # Dashboard-specific UI
+│   ├── home/             # Landing Page UI
+│   ├── template/         # Template Engine UI
+│   └── ui/               # Shared Reusable Components
+├── hooks/                # Custom React Hooks (useTheme, useUser)
+├── lib/                  # Utilities & Business Logic
+│   ├── ai/               # Gemini AI Prompts & Config
+│   └── supabase/         # Auth & Database Clients
+└── public/               # Static Assets
+```
+Built with ❤️ by [Akhil Thirunalveli]
