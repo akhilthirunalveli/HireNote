@@ -23,7 +23,7 @@ export default async function HomePage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[var(--foreground)] leading-[1.1]">
-            Land your dream job with <span className="underline decoration-4 decoration-wavy decoration-blue-500 dark:decoration-blue-400 underline-offset-8">cold emails</span>.
+            Land your dream job with <span className="underline decoration-4 decoration-wavy decoration-blue-500 dark:decoration-blue-400 underline-offset-8">cold emails</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
@@ -42,7 +42,7 @@ export default async function HomePage() {
         <TemplateScroller user={user} />
       </div>
 
-      <footer className="py-6 border-t border-[var(--border)] text-center text-sm text-muted">
+      <footer className="py-6 text-center text-sm text-muted bg-[var(--background)] relative z-20">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-[var(--muted-foreground)]">
             Built by a student, for students.
